@@ -21,7 +21,7 @@ The application consists of:
 - **Document Processing**: Extracting and chunking text from various file formats
 - **Document Repository**: Managing and storing document chunks
 - **Query Processing**: Using Model Context Protocol to match queries to relevant content
-- **LLM Integration**: Generating answers based on relevant document context
+- **Claude 3.5 Sonnet Integration**: Generating answers based on relevant document context
 - **Gradio Interface**: Simple user interface for interaction
 
 ## Setup Instructions
@@ -30,7 +30,7 @@ The application consists of:
 
 - Python 3.9+
 - Google Cloud Platform account with OAuth credentials
-- OpenAI API key
+- Anthropic API key
 
 ### Installation
 
@@ -47,7 +47,7 @@ The application consists of:
 
 3. Create a `.env` file with your credentials:
    ```
-   OPENAI_API_KEY=your_openai_api_key
+   ANTHROPIC_API_KEY=your_anthropic_api_key
    GOOGLE_CLIENT_ID=your_google_client_id
    GOOGLE_CLIENT_SECRET=your_google_client_secret
    GOOGLE_REDIRECT_URI=http://localhost:7860/oauth2callback

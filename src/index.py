@@ -16,7 +16,7 @@ load_dotenv()
 
 # Check for required environment variables
 required_env_vars = [
-    "OPENAI_API_KEY",
+    "ANTHROPIC_API_KEY",
     "GOOGLE_CLIENT_ID",
     "GOOGLE_CLIENT_SECRET",
     "GOOGLE_REDIRECT_URI"

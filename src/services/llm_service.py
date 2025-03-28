@@ -1,9 +1,9 @@
 import os
-import openai
+import anthropic
 from typing import List, Dict, Any, Optional
 
-# Initialize OpenAI client
-openai.api_key = os.getenv("OPENAI_API_KEY")
+# Initialize Anthropic client
+client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
 
 def select_relevant_chunks(chunks: List[str], query: str, max_chunks: int = 5) -> List[str]:
     """
@@ -49,7 +49,7 @@ def create_context_from_chunks(chunks: List[str], max_tokens: int = 3000) -> str
 
 def generate_answer(query: str, context: str) -> str:
     """
-    Generate an answer using the LLM with the Model Context Protocol approach.
+    Generate an answer using Claude 3.7 Sonnet with the Model Context Protocol approach.
     The context is directly inserted into the prompt without using embeddings.
     """
     prompt = f"""You are a helpful assistant that answers questions based ONLY on the provided context.
@@ -63,17 +63,17 @@ QUESTION: {query}
 
 ANSWER:"""
 
-    response = openai.chat.completions.create(
-        model="gpt-4o",
-        messages=[
-            {"role": "system", "content": "You are a helpful assistant that answers questions based ONLY on the provided context."},
-            {"role": "user", "content": prompt}
-        ],
+    response = client.messages.create(
+        model="claude-3-5-sonnet-20240620",
+        max_tokens=500,
         temperature=0.2,
-        max_tokens=500
+        system="You are a helpful assistant that answers questions based ONLY on the provided context.",
+        messages=[
+            {"role": "user", "content": prompt}
+        ]
     )
     
-    return response.choices[0].message.content.strip()
+    return response.content[0].text
 
 def query_documents(query: str, all_chunks: List[str]) -> str:
     """Process a query against document chunks using Model Context Protocol."""
