@@ -1,0 +1,40 @@
+# Environment variables
+.env
+
+# Python virtual environment
+venv/
+env/
+.venv/
+ENV/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Local document storage
+document_storage.json
+
+# Temporary files
+.DS_Store
+*.tmp
+*.temp
+tmp/
+
+# Logs
+logs/
+*.log
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo 
+node_modules
+node_modules
